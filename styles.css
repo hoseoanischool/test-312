@@ -1,32 +1,99 @@
-/* ... 기존 공통 스타일 유지 ... */
-
-.seat-container.room-312 {
-    display: grid;
-    grid-template-columns: repeat(7, 70px); /* 좌석 6열 + 중앙 통로 */
-    gap: 10px;
-    justify-content: center;
-    grid-template-areas:
-        "s1  s2  s3  . s4  s5  s6"
-        "s9  s10 s11 . s12 s13 s14"
-        "s17 s18 s19 . s20 s21 s22"
-        "s23 s24 s25 s26 . . s27"
-        "s28 s29 . . . . s30"
-        "s31 . . . . . s32"
-        "s33 . . . . . s34"
-        "s35 . . . . . s36";
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, sans-serif;
+  padding: 20px;
+  background: #f2f2f2;
 }
 
-/* 312호 개별 좌석 위치 매핑 */
+h1, h2 { text-align: center; }
+
+.hint {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.week-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 10px 0 18px;
+}
+
+.week-tabs button {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.week-tabs button.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+.week-tabs button.inactive {
+  background-color: #ccc;
+  color: #666;
+  border-color: #ccc;
+}
+
+.seat-container {
+  display: grid;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* ▼ 수정된 부분: 312호 좌석 배치 */
+.seat-container.room-312 {
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "s1  s2  s3  . s4  s5  s6  . s7  s8"
+      "s9  s10 s11 . s12 s13 s14 . s15 s16"
+      "s17 s18 s19 . s20 s21 s22"
+      "s23 s24 s25 . . s26"
+      "s27 s28 . . . . s29"
+      "s30 . . . . . s31"
+      "s32 . . . . . s33"
+      "s34 . . . . . s35";
+}
+
+.seat-container.past-date .seat {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.seat {
+  width: 80px;
+  height: 80px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: pre-line;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+}
+
+/* 312호 좌석 배치 */
 .room-312 .seat[data-seat-number="1"] { grid-area: s1; }
 .room-312 .seat[data-seat-number="2"] { grid-area: s2; }
 .room-312 .seat[data-seat-number="3"] { grid-area: s3; }
 .room-312 .seat[data-seat-number="4"] { grid-area: s4; }
 .room-312 .seat[data-seat-number="5"] { grid-area: s5; }
 .room-312 .seat[data-seat-number="6"] { grid-area: s6; }
-/* 7, 8번은 이미지상 상단 우측 그룹 (7->15행으로 추정되나 이미지 번호 순서대로 배치) */
-.room-312 .seat[data-seat-number="7"] { grid-area: s7; } /* 이미지에 따라 위치 조정 가능 */
+.room-312 .seat[data-seat-number="7"] { grid-area: s7; }
 .room-312 .seat[data-seat-number="8"] { grid-area: s8; }
-
 .room-312 .seat[data-seat-number="9"] { grid-area: s9; }
 .room-312 .seat[data-seat-number="10"] { grid-area: s10; }
 .room-312 .seat[data-seat-number="11"] { grid-area: s11; }
@@ -35,35 +102,80 @@
 .room-312 .seat[data-seat-number="14"] { grid-area: s14; }
 .room-312 .seat[data-seat-number="15"] { grid-area: s15; }
 .room-312 .seat[data-seat-number="16"] { grid-area: s16; }
-
 .room-312 .seat[data-seat-number="17"] { grid-area: s17; }
 .room-312 .seat[data-seat-number="18"] { grid-area: s18; }
 .room-312 .seat[data-seat-number="19"] { grid-area: s19; }
 .room-312 .seat[data-seat-number="20"] { grid-area: s20; }
 .room-312 .seat[data-seat-number="21"] { grid-area: s21; }
 .room-312 .seat[data-seat-number="22"] { grid-area: s22; }
-
 .room-312 .seat[data-seat-number="23"] { grid-area: s23; }
 .room-312 .seat[data-seat-number="24"] { grid-area: s24; }
 .room-312 .seat[data-seat-number="25"] { grid-area: s25; }
 .room-312 .seat[data-seat-number="26"] { grid-area: s26; }
 .room-312 .seat[data-seat-number="27"] { grid-area: s27; }
-
 .room-312 .seat[data-seat-number="28"] { grid-area: s28; }
 .room-312 .seat[data-seat-number="29"] { grid-area: s29; }
 .room-312 .seat[data-seat-number="30"] { grid-area: s30; }
-
 .room-312 .seat[data-seat-number="31"] { grid-area: s31; }
 .room-312 .seat[data-seat-number="32"] { grid-area: s32; }
-
 .room-312 .seat[data-seat-number="33"] { grid-area: s33; }
 .room-312 .seat[data-seat-number="34"] { grid-area: s34; }
-
 .room-312 .seat[data-seat-number="35"] { grid-area: s35; }
-.room-312 .seat[data-seat-number="36"] { grid-area: s36; }
 
-.seat {
-  width: 70px;
-  height: 70px;
-  /* ... 나머지 스타일 유지 ... */
+.seat strong { display: block; font-size: 16px; margin-bottom: 2px; }
+.seat .name { font-weight: 600; font-size: 13px; }
+
+.seat.booked { background-color: #e74c3c; }
+
+.modal {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  align-items: center; justify-content: center;
 }
+.modal.show { display: flex; }
+.modal-content {
+  background: white; padding: 20px;
+  border-radius: 12px; min-width: 280px;
+  text-align: center;
+}
+.modal-actions { margin-top: 12px; }
+
+input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 14px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover { background-color: #2980b9; }
+
+.search-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#reservationList {
+  max-width: 700px; margin: 0 auto;
+  background: #fff; border-radius: 10px; padding: 10px 14px;
+}
+.res-item {
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: space-between;
+  border-bottom: 1px dashed #eee; padding: 8px 0;
+}
+
+.res-item:last-child { border-bottom: 0; }
