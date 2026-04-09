@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>312호 야작 좌석 예약</title>
   <link rel="stylesheet" href="styles.css"/>
+
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
@@ -15,12 +16,59 @@
   <div class="hint" style="color:red; font-weight: bold;">
     나만의 4자리 숫자는 예약 조회 및 예약 취소의 경우 필요한 숫자입니다. 반드시 어딘가에 기록해 두시길 바랍니다.
   </div>
+  <div class="hint">* 주간은 월요일 시작, 한국시간(KST) 기준으로 자동 생성됩니다.</div>
 
   <div id="seatLayout" class="seat-container"></div>
 
+  <div id="bookingModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <h2 id="modalTitle">좌석 예약</h2>
+      <input id="modalName" placeholder="이름(예: 이OO)"/>
+      <input id="modalStudentId" placeholder="학번"/>
+      <input id="modalPhoneNumber" placeholder="나만의 4자리 숫자"/>
+      <div class="modal-actions">
+        <button id="modalSubmitBtn">예약하기</button>
+        <button id="modalCloseBtn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmationModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <h2>예약 완료</h2>
+      <p id="confirmationMessage" style="line-height: 1.6;"></p>
+      <div class="modal-actions">
+        <button id="confirmationCloseBtn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>예약 조회 및 취소</h2>
+  <div id="openChatLinkContainer" class="hint" style="margin-bottom: 15px;"></div>
+
+  <div class="search-bar">
+    <input id="searchName" placeholder="이름"/>
+    <input id="searchStudentId" placeholder="학번"/>
+    <input id="searchPhoneNumber" placeholder="나만의 4자리 숫자"/>
+    <button id="searchBtn">조회</button>
+    <button id="copyCsvBtn" title="관리자용 CSV 복사">CSV복사</button>
+  </div>
+  <div id="reservationList"></div>
+
+  <div class="hint" style="color:red; font-weight: bold; margin-top: 30px;">
+    4자리 숫자를 까먹으신 경우, 과사무실에 본인이 직접 방문하셔서 실습조교에게 문의 바랍니다.
+  </div>
+
   <script>
-    // Firebase Config 유지
-    const firebaseConfig = { ... };
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDJJZpTEKecGQR4txv__jKob-f8IF3quI",
+      authDomain: "test-b8438.firebaseapp.com",
+      databaseURL: "https://test-b8438-default-rtdb.firebaseio.com",
+      projectId: "test-b8438",
+      storageBucket: "test-b8438.firebasestorage.app",
+      messagingSenderId: "226140307403",
+      appId: "1:226140307403:web:d473b4495a4ef0928c804e",
+    };
     firebase.initializeApp(firebaseConfig);
     window.db = firebase.database();
   </script>
