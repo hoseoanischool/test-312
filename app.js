@@ -315,7 +315,7 @@ async function copyCsv() {
 function showConfirmationModal(profileName) {
   const message = `
     프로필 이름을 <strong>'${profileName}'</strong>으로 설정한 후 입장 바랍니다.<br><br>
-    <a href="https://open.kakao.com/o/gS1ZZ8gh" target="_blank" rel="noopener noreferrer" style="color: #3498db; font-weight: bold; text-decoration: none;">
+    <a href="https://open.kakao.com/o/gpEagxpi" target="_blank" rel="noopener noreferrer" style="color: #3498db; font-weight: bold; text-decoration: none;">
       ▶ 야작 오픈 채팅방 입장하기
     </a>
   `;
