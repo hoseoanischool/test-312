@@ -254,7 +254,7 @@ async function searchReservation() {
       ▶ 야작 오픈 채팅방 바로가기
     </a>
   `;
-
+  
   results.forEach(res => {
     const row = document.createElement("div");
     row.className = "res-item";
