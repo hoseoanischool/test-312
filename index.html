@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>312호 야작 좌석 예약</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+  <h1>312호 야간 작업(야작) 좌석 예약</h1>
+
+  <div id="weekTabs" class="week-tabs"></div>
+  <div class="hint" style="color:red; font-weight: bold;">
+    나만의 4자리 숫자는 예약 조회 및 예약 취소의 경우 필요한 숫자입니다. 반드시 어딘가에 기록해 두시길 바랍니다.
+  </div>
+
+  <div id="seatLayout" class="seat-container"></div>
+
+  <script>
+    // Firebase Config 유지
+    const firebaseConfig = { ... };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
