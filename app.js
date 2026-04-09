@@ -344,3 +344,11 @@ $confirmationCloseBtn.onclick = closeConfirmationModal;
 renderWeekTabs();
 
 attachBookingsListener();
+if ($modalCloseBtn) $modalCloseBtn.onclick = closeModal;
+if ($modalSubmitBtn) $modalSubmitBtn.onclick = submitBooking;
+if ($searchBtn) $searchBtn.onclick = searchReservation;
+if ($copyCsvBtn) $copyCsvBtn.onclick = copyCsv;
+if ($confirmationCloseBtn) $confirmationCloseBtn.onclick = closeConfirmationModal;
+
+renderWeekTabs();
+attachBookingsListener();
